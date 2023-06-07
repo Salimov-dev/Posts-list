@@ -1,18 +1,15 @@
 import React from "react";
 
-const SearchForm = () => {
+const SearchForm = ({setData}) => {
   return (
-    <form className="d-flex" role="search">
+    <form className="d-flex w-50" role="search">
       <input
-        className="form-control-sm me-2 "
+        className="form-control "
         type="search"
         placeholder="Найти по заголовку"
         aria-label="Поиск"
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={(e) => setData(e.target.value)}
       />
-      <button className="btn btn-outline-success btn-sm" type="submit">
-        Поиск
-      </button>
     </form>
   );
 };
