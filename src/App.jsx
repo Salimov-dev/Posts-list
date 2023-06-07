@@ -5,19 +5,19 @@ import Posts from "./components/page/posts";
 import AboutDeveloper from "./components/page/about-developer";
 import AboutUser from "./components/page/about-user";
 import AppLoader from "./hoc/app-loader";
+import Navbar from "./components/UI/navbar/navbar";
 
 function App() {
   return (
     <div className="App">
-      {/* <AppLoader> */}
-        <BrowserRouter>
-          <Routes>
-            <Route index path="/" element={<Posts />} />
-            <Route path="/developer" element={<AboutDeveloper />} />
-            <Route path="/user/:userId?" element={<AboutUser />} />
-          </Routes>
-        </BrowserRouter>
-      {/* </AppLoader> */}
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route index path="/" element={<Posts />} />
+          <Route path="/developer" element={<AboutDeveloper />} />
+          <Route path="/user/:userId?" element={<AboutUser />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
