@@ -1,0 +1,1 @@
+export const quantityOnPageOptions = [5, 10, 25, 50];

@@ -1,6 +1,10 @@
 import React from "react";
 
-const QuantityOnPage = ({setPageSizePagination, pageSizePagination, quantityOnPageArray}) => {
+const QuantityOnPage = ({
+  setPageSizePagination,
+  pageSizePagination,
+  quantityOnPageOptions,
+}) => {
   const handleChange = ({ target }) => {
     console.log("target", target.value);
     setPageSizePagination(target.value);
@@ -19,7 +23,7 @@ const QuantityOnPage = ({setPageSizePagination, pageSizePagination, quantityOnPa
         onChange={handleChange}
         value={pageSizePagination}
       >
-        {quantityOnPageArray.map((q) => (
+        {quantityOnPageOptions.map((q) => (
           <option key={q}>{q}</option>
         ))}
       </select>

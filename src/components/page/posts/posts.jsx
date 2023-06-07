@@ -1,26 +1,32 @@
 import React, { useMemo, useState } from "react";
+// libraries
 import { useSelector } from "react-redux";
-import { getPosts } from "../../../store/posts.store";
-import { getUsers } from "../../../store/users.store";
-import { getComments } from "../../../store/comments.store";
+import _ from "lodash";
+// components
 import PostCard from "./components/post-card";
-import { getSearchQuery } from "../../../store/searchQuery.store";
-import { paginate } from "../../../utils/paginate";
 import Pagination from "../../common/pagination/Pagination";
 import SearchForm from "../../UI/navbar/components/search-form";
 import QuantityOnPage from "./components/quantity-on-page";
+import Switch from "../../common/switch";
+// store
+import { getPosts } from "../../../store/posts.store";
+import { getUsers } from "../../../store/users.store";
+import { getComments } from "../../../store/comments.store";
+// utils
+import { paginate } from "../../../utils/paginate";
+// mock
+import { quantityOnPageOptions } from "../../../mockData/quantity-on-page-options";
 
 const Posts = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [isSort, setIsSort] = useState(false);
   const [quantityOnPage, setQuantityOnPage] = useState(5);
-  const [sortBy, setSortBy] = useState({ path: "", order: "" });
   const [pageSizePagination, setPageSizePagination] = useState(quantityOnPage);
   const [currentPage, setCurrentPage] = useState(1);
 
   const posts = useSelector(getPosts());
   const users = useSelector(getUsers());
   const comments = useSelector(getComments());
-  const quantityOnPageArray = [5, 10, 25, 50];
 
   const searchedPosts = useMemo(() => {
     let searchedPostsArray = [];
@@ -34,7 +40,8 @@ const Posts = () => {
 
   const postsList = searchedPosts.length > 0 ? searchedPosts : posts;
   const count = postsList.length;
-  let postsCrop = paginate(postsList, currentPage, pageSizePagination);
+  const sortedPosts = _.orderBy(postsList, [isSort ? "title" : ""]);
+  let postsCrop = paginate(sortedPosts, currentPage, pageSizePagination);
 
   const handlePageChange = (pageIndex) => {
     setCurrentPage(pageIndex);
@@ -48,7 +55,12 @@ const Posts = () => {
           <QuantityOnPage
             setPageSizePagination={setPageSizePagination}
             pageSizePagination={pageSizePagination}
-            quantityOnPageArray={quantityOnPageArray}
+            quantityOnPageOptions={quantityOnPageOptions}
+          />
+          <Switch
+            name="sortByHeader"
+            onClick={() => setIsSort(!isSort)}
+            label="Сортировать по заголовку"
           />
         </div>
 
