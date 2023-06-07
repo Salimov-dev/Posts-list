@@ -13,10 +13,8 @@ const Navbar = () => {
       <nav className="navbar navbar-dark bg-dark">
         <div className="container-fluid">
           <BurgerMenu />
-          <div className="d-flex gap-3">
-            <NavbarList />
-            <SearchForm />
-          </div>
+          <NavbarList />
+          <SearchForm />
         </div>
       </nav>
       <Sidebar />

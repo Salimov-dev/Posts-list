@@ -2,7 +2,7 @@ import React from 'react';
 
 const BurgerMenu = () => {
     return <button
-    className="navbar-toggler"
+    className="navbar-toggler me-auto"
     type="button"
     data-bs-toggle="offcanvas"
     data-bs-target="#offcanvasDarkNavbar"

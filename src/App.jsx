@@ -10,14 +10,16 @@ import Navbar from "./components/UI/navbar/navbar";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route index path="/" element={<Posts />} />
-          <Route path="/developer" element={<AboutDeveloper />} />
-          <Route path="/user/:userId?" element={<AboutUser />} />
-        </Routes>
-      </BrowserRouter>
+      <AppLoader>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route index path="/" element={<Posts />} />
+            <Route path="/developer" element={<AboutDeveloper />} />
+            <Route path="/user/:userId?" element={<AboutUser />} />
+          </Routes>
+        </BrowserRouter>
+      </AppLoader>
     </div>
   );
 }
