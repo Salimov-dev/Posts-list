@@ -1,7 +1,7 @@
 // libraries
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 // components
-import Posts from "./components/page/posts";
+import Posts from "./components/page/posts/posts";
 import AboutDeveloper from "./components/page/about-developer";
 import AboutUser from "./components/page/about-user";
 import AppLoader from "./hoc/app-loader";
