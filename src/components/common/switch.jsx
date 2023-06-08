@@ -11,7 +11,7 @@ const Switch = ({name, onClick, label}) => {
         id={name}
         onClick={onClick}
       />
-      <label className="form-check-label" htmlFor={name}>
+      <label className="form-check-label text-nowrap" htmlFor={name}>
         {label}
       </label>
     </div>

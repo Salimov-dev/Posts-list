@@ -1,21 +1,23 @@
 import React, { useMemo, useState } from "react";
 // libraries
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
 // components
-import PostCard from "./components/post-card";
-import Pagination from "../../common/pagination/Pagination";
-import SearchForm from "../../UI/navbar/components/search-form";
-import QuantityOnPage from "./components/quantity-on-page";
-import Switch from "../../common/switch";
+import PostCard from "../common/card/post-card";
+import Pagination from "../common/pagination/Pagination";
+import SearchForm from "../UI/navbar/components/search-form";
+import QuantityOnPage from "../common/card/quantity-on-page";
+import Switch from "../common/switch";
 // store
-import { getPosts } from "../../../store/posts.store";
-import { getUsers } from "../../../store/users.store";
-import { getComments } from "../../../store/comments.store";
+import { getPosts } from "../../store/posts.store";
+import { getUsers } from "../../store/users.store";
+import { getComments } from "../../store/comments.store";
 // utils
-import { paginate } from "../../../utils/paginate";
+import { paginate } from "../../utils/paginate";
 // mock
-import { quantityOnPageOptions } from "../../../mockData/quantity-on-page-options";
+import { quantityOnPageOptions } from "../../mockData/quantity-on-page-options";
+import { setSelectedUser } from "../../store/selected-user.store";
+import Loader from "../common/loader";
 
 const Posts = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -26,7 +28,8 @@ const Posts = () => {
 
   const posts = useSelector(getPosts());
   const users = useSelector(getUsers());
-  const comments = useSelector(getComments());
+
+  const dispatch = useDispatch();
 
   const searchedPosts = useMemo(() => {
     let searchedPostsArray = [];
@@ -42,15 +45,18 @@ const Posts = () => {
   const count = postsList.length;
   const sortedPosts = _.orderBy(postsList, [isSort ? "title" : ""]);
   let postsCrop = paginate(sortedPosts, currentPage, pageSizePagination);
-
   const handlePageChange = (pageIndex) => {
     setCurrentPage(pageIndex);
+  };
+
+  const handleOpenUserPage = (userId) => {
+    dispatch(setSelectedUser(userId));
   };
 
   return (
     <>
       <div className="container p-3">
-        <div className="d-flex gap-3 align-items-center mb-2">
+        <div className="d-flex gap-3 align-items-center mb-2 justify-content-between">
           <SearchForm setData={setSearchQuery} />
           <QuantityOnPage
             setPageSizePagination={setPageSizePagination}
@@ -64,11 +70,21 @@ const Posts = () => {
           />
         </div>
 
-        {postsCrop.map((post) => (
-          <div key={post.id} className="card p-3 mb-3 myCard">
-            <PostCard post={post} users={users} comments={comments} />
+        {postsCrop.length > 0 ? (
+          postsCrop.map((post) => (
+            <div key={post.id} className="card p-3 mb-3 myCard">
+              <PostCard
+                post={post}
+                users={users}
+                onOpenUserPage={handleOpenUserPage}
+              />
+            </div>
+          ))
+        ) : (
+          <div style={{ height: "75vh" }}>
+            <Loader />
           </div>
-        ))}
+        )}
       </div>
 
       <Pagination

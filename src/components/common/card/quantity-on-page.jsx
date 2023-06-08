@@ -6,12 +6,12 @@ const QuantityOnPage = ({
   quantityOnPageOptions,
 }) => {
   const handleChange = ({ target }) => {
-    console.log("target", target.value);
     setPageSizePagination(target.value);
   };
+
   return (
     <>
-      <label htmlFor="quantityOnPage" className="d-flex ">
+      <label htmlFor="quantityOnPage" className="d-flex text-nowrap">
         Кол-во на странице:
       </label>
       <select

@@ -1,11 +1,12 @@
 // libraries
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 // components
-import Posts from "./components/page/posts/posts";
+import Posts from "./components/page/posts";
 import AboutDeveloper from "./components/page/about-developer";
 import AboutUser from "./components/page/about-user";
-import AppLoader from "./hoc/app-loader";
 import Navbar from "./components/UI/navbar/navbar";
+// hoc
+import AppLoader from "./hoc/app-loader";
 
 function App() {
   return (

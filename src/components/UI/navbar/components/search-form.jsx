@@ -2,7 +2,7 @@ import React from "react";
 
 const SearchForm = ({setData}) => {
   return (
-    <form className="d-flex w-50" role="search">
+    <form className="d-flex w-100" role="search">
       <input
         className="form-control "
         type="search"

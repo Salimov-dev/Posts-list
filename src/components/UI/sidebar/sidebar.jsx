@@ -26,12 +26,12 @@ const Sidebar = () => {
 
       <div className="offcanvas-body">
         <div className="d-flex gap-2 mb-3">
-          <button className="btn btn-outline-info mb-1 w-100">
-            <NavLink className="nav-link" to="/developer">
+          <button className="btn btn-outline-info mb-1 w-100" data-bs-dismiss="offcanvas" aria-label="Close">
+            <NavLink className="nav-link" to="/">
               Список постов
             </NavLink>
           </button>
-          <button className="btn btn-outline-warning mb-1 w-100">
+          <button className="btn btn-outline-warning mb-1 w-100" data-bs-dismiss="offcanvas" aria-label="Close">
             <NavLink className="nav-link" to="/developer">
               О разработчике
             </NavLink>

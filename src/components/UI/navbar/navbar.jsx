@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 // components
-import SearchForm from "./components/search-form";
 import NavbarList from "./components/navbar-list";
 import BurgerMenu from "./components/burger-menu";
 import Sidebar from "../sidebar/sidebar";
