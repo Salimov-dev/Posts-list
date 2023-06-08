@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import MyPhoto from "../../../assets/myPhoto.jpg";
+import MyPhoto from "../../../assets/ava.png";
 
 const Sidebar = () => {
   return (
     <div
       className="offcanvas offcanvas-start text-bg-dark"
-      style={{ maxWidth: "350px" }}
+      style={{ maxWidth: "250px" }}
       tabIndex="-1"
       data-bs-backdrop="false"
       id="offcanvasDarkNavbar"
@@ -25,23 +25,30 @@ const Sidebar = () => {
       </div>
 
       <div className="offcanvas-body">
-        <div className="d-flex gap-2 mb-3">
-          <button className="btn btn-outline-info mb-1 w-100" data-bs-dismiss="offcanvas" aria-label="Close">
+        <div className="d-flex flex-column gap-2 mb-3">
+          <img src={MyPhoto} alt="Avatar" className="mb-3 rounded w-100" />
+          <button
+            className="btn btn-outline-info mb-1 w-100"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
             <NavLink className="nav-link" to="/">
               Список постов
             </NavLink>
           </button>
-          <button className="btn btn-outline-warning mb-1 w-100" data-bs-dismiss="offcanvas" aria-label="Close">
+          <button
+            className="btn btn-outline-warning mb-1 w-100"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
             <NavLink className="nav-link" to="/developer">
               О разработчике
             </NavLink>
           </button>
         </div>
 
-        <img src={MyPhoto} alt="Avatar" className="mb-3 rounded w-100" />
-
         <div className="d-flex flex-column align-items-center">
-          <p>E-mail: salimov.rent@mail.ru</p>
+          <p>salimov.rent@mail.ru</p>
         </div>
       </div>
     </div>
