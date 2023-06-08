@@ -9,6 +9,7 @@ import Pagination from "../common/pagination/Pagination";
 import SearchForm from "../UI/navbar/components/search-form";
 import QuantityOnPage from "../common/card/quantity-on-page";
 import Switch from "../common/switch";
+import UserProfile from "../common/user-profile";
 // store
 import { getPosts } from "../../store/posts.store";
 import { getSelectedUser, getUsers } from "../../store/users.store";
@@ -16,10 +17,8 @@ import { getComments } from "../../store/comments.store";
 import { setSelectedUser } from "../../store/selected-user.store";
 // utils
 import { paginate } from "../../utils/paginate";
-import { generatePhotoNumber } from "../../utils/generate-photo-number";
 // mock
 import { quantityOnPageOptions } from "../../mockData/quantity-on-page-options";
-import UserProfile from "../common/user-profile";
 
 const AboutUser = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -64,6 +63,7 @@ const AboutUser = () => {
     searchedPosts.length > 0 ? searchedPosts : selectedUserPosts;
   const count = postsList.length;
   const sortedPosts = _.orderBy(postsList, [isSort ? "title" : ""]);
+  
   let postsCrop = paginate(sortedPosts, currentPage, pageSizePagination);
 
   const handlePageChange = (pageIndex) => {

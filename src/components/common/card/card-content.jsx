@@ -1,8 +1,11 @@
 import React from "react";
-import { generatePhotoNumber } from "../../../utils/generate-photo-number";
-import { makeUpperCaseFirstSymbol } from "../../../utils/make-upper-sase-first-symbol";
+// libraries
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+// utils
+import { generatePhotoNumber } from "../../../utils/generate-photo-number";
+import { makeUpperCaseFirstSymbol } from "../../../utils/make-upper-sase-first-symbol";
+// store
 import { getUserName } from "../../../store/users.store";
 
 const CardContent = ({ post, onOpenUserPage }) => {

@@ -5,9 +5,18 @@ const AboutDeveloper = () => {
   return (
     <div className="container p-3">
       <div className="card p-3">
+
         <h3>Информация о разработчике</h3>
-        <div className="d-flex">
-          <img src={Avatar} alt="Аватар" style={{ width: "250px" }} />
+
+        <div className="d-flex align-items-start flex-column flex-md-row">
+          <div className="d-flex justify-content-center w-100 mb-3">
+            <img
+              src={Avatar}
+              className="object-fit-contain  "
+              alt="Аватар"
+              style={{ width: "250px" }}
+            />
+          </div>
 
           <div className="d-flex flex-column ms-3">
             <span>
@@ -55,6 +64,7 @@ const AboutDeveloper = () => {
               принимаю активное участие в разработке.
             </span>
           </div>
+          
         </div>
       </div>
     </div>

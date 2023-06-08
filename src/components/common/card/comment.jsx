@@ -1,5 +1,5 @@
 import React from "react";
-import { makeLowerCaseFirstSymbol } from "../../../utils/make-lower-sase-first-symbol copy";
+import { makeLowerCaseFirstSymbol } from "../../../utils/make-lower-sase-first-symbol";
 import { makeUpperCaseFirstSymbol } from "../../../utils/make-upper-sase-first-symbol";
 import { generatePhotoNumber } from "../../../utils/generate-photo-number";
 

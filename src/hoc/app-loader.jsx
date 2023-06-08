@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
+// store
 import { loadPostsList } from "../store/posts.store"
 import { loadUsersList } from "../store/users.store"
 

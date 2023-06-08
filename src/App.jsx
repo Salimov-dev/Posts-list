@@ -1,5 +1,5 @@
 // libraries
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 // components
 import Posts from "./components/page/posts";
 import AboutDeveloper from "./components/page/about-developer";
@@ -18,6 +18,7 @@ function App() {
             <Route index path="/" element={<Posts />} />
             <Route path="/developer" element={<AboutDeveloper />} />
             <Route path="/user/:userId?" element={<AboutUser />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
       </AppLoader>

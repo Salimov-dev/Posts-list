@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getComments,
@@ -7,6 +7,7 @@ import {
 } from "../../../store/comments.store";
 import Comment from "./comment";
 import Loader from "../loader";
+import { nanoid } from "nanoid";
 
 const Comments = ({ post }) => {
   const comments = useSelector(getComments());
@@ -29,6 +30,7 @@ const Comments = ({ post }) => {
     }
     return result;
   };
+
   let randomId = (
     generateRandomLetters() + Math.round(Math.random() * (100 - 1) + 1)
   )

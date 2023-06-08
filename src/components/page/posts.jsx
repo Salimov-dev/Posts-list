@@ -25,26 +25,25 @@ const Posts = () => {
   const [quantityOnPage, setQuantityOnPage] = useState(5);
   const [pageSizePagination, setPageSizePagination] = useState(quantityOnPage);
   const [currentPage, setCurrentPage] = useState(1);
+  const dispatch = useDispatch();
 
   const posts = useSelector(getPosts());
   const users = useSelector(getUsers());
 
-  const dispatch = useDispatch();
-
   const searchedPosts = useMemo(() => {
     let searchedPostsArray = [];
-
     searchedPostsArray = posts.filter((post) =>
       post.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
-
     return searchedPostsArray;
   }, [searchQuery]);
 
   const postsList = searchedPosts.length > 0 ? searchedPosts : posts;
   const count = postsList.length;
   const sortedPosts = _.orderBy(postsList, [isSort ? "title" : ""]);
+
   let postsCrop = paginate(sortedPosts, currentPage, pageSizePagination);
+
   const handlePageChange = (pageIndex) => {
     setCurrentPage(pageIndex);
   };
@@ -56,7 +55,7 @@ const Posts = () => {
   return (
     <>
       <div className="container p-3">
-        <div className="d-flex gap-3 flex-column-reverse align-items-center mb-2 justify-content-between  flex-lg-row">
+        <div className="d-flex gap-3 flex-column-reverse align-items-center mb-2 justify-content-between flex-lg-row">
           <SearchForm setData={setSearchQuery} className="d-flex" />
           <div className="d-flex gap-3 align-items-center quantityAndSwitch__container">
             <QuantityOnPage
