@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar navbar-dark bg-dark">
-        <div className="container-fluid">
+        <div className="container-fluid d-flex navbar__container">
           <BurgerMenu />
           <NavbarList />
         </div>

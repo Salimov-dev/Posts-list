@@ -56,18 +56,20 @@ const Posts = () => {
   return (
     <>
       <div className="container p-3">
-        <div className="d-flex gap-3 align-items-center mb-2 justify-content-between">
-          <SearchForm setData={setSearchQuery} />
-          <QuantityOnPage
-            setPageSizePagination={setPageSizePagination}
-            pageSizePagination={pageSizePagination}
-            quantityOnPageOptions={quantityOnPageOptions}
-          />
-          <Switch
-            name="sortByHeader"
-            onClick={() => setIsSort(!isSort)}
-            label="Сортировать по заголовку"
-          />
+        <div className="d-flex gap-3 flex-column-reverse align-items-center mb-2 justify-content-between  flex-lg-row">
+          <SearchForm setData={setSearchQuery} className="d-flex" />
+          <div className="d-flex gap-3 align-items-center quantityAndSwitch__container">
+            <QuantityOnPage
+              setPageSizePagination={setPageSizePagination}
+              pageSizePagination={pageSizePagination}
+              quantityOnPageOptions={quantityOnPageOptions}
+            />
+            <Switch
+              name="sortByHeader"
+              onClick={() => setIsSort(!isSort)}
+              label="Сортировать"
+            />
+          </div>
         </div>
 
         {postsCrop.length > 0 ? (

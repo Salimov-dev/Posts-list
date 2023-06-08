@@ -82,7 +82,7 @@ const AboutUser = () => {
     <>
       <div className="container p-3">
         <NavLink to={-1}>
-          <button className="btn btn-outline-secondary mb-2">Вернуться к постам</button>
+          <button className="btn btn-outline-secondary mb-2">Назад</button>
         </NavLink>
 
         <UserProfile array={selectedUserTransform} />

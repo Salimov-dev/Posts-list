@@ -12,13 +12,13 @@ const Comments = ({ post }) => {
   const comments = useSelector(getComments());
   const isLoading = useSelector(getCommentsStatus());
   const dispatch = useDispatch();
-  // console.log("comments", comments);
 
   const handleLoadComments = (postId) => {
-    dispatch(loadCommentsList(postId));
+    if (comments[post.id] === undefined) {
+      return dispatch(loadCommentsList(postId));
+    }
   };
 
-  // START generate random ID for collapse
   const generateRandomLetters = () => {
     let length = 3;
     let result = " ";
@@ -34,7 +34,6 @@ const Comments = ({ post }) => {
   )
     .replace(" ", "")
     .trim();
-  // END generate random ID for collapse
 
   return (
     <div className="d-flex flex-column align-items-end">

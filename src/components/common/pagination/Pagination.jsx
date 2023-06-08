@@ -24,7 +24,7 @@ const Pagination = ({
   };
 
   return (
-    <div className="container d-flex justify-content-center">
+    <div className="container d-flex justify-content-center ">
       {objects.length < pageSize && currentPage === 1 ? null : (
         <nav aria-label="Page navigation example">
           <ul className="pagination ">
@@ -35,11 +35,12 @@ const Pagination = ({
             >
               <span aria-hidden="true">&laquo;</span>
             </button>
-            {pages.map((page) => (
+            <div className="d-flex flex-wrap justify-content-center">
+             {pages.map((page) => (
               <li
                 key={"page_" + page}
                 className={
-                  `page-item ` + (page === currentPage ? "active" : " ")
+                  `rounded-circle page-item ` + (page === currentPage ? "active" : " ")
                 }
               >
                 <button
@@ -50,6 +51,8 @@ const Pagination = ({
                 </button>
               </li>
             ))}
+            </div>
+           
             <button
               className="page-link"
               aria-label="Next"

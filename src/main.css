@@ -8,3 +8,24 @@
 .myCard:last-child {
   margin-bottom: 0px !important;
 }
+
+.page-item:first-child .page-link,
+.page-item:last-child .page-link {
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 420px) {
+  .navbar__container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+  .burger__icon {
+    font-size: 14px;
+    width: 20px;
+  }
+  .quantityAndSwitch__container {
+    flex-direction: column-reverse;
+  }
+}

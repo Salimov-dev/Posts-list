@@ -1,10 +1,10 @@
 import React from "react";
 
-const SearchForm = ({setData}) => {
+const SearchForm = ({ setData }) => {
   return (
-    <form className="d-flex w-100" role="search">
+    <form className="d-flex w-100 " role="search">
       <input
-        className="form-control "
+        className="form-control"
         type="search"
         placeholder="Найти по заголовку"
         aria-label="Поиск"
