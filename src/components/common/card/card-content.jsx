@@ -30,7 +30,7 @@ const CardContent = ({ post, onOpenUserPage }) => {
       <div className="w-100 ps-3">
         <h2 className="card-title">{makeUpperCaseFirstSymbol(post.title)}</h2>
         <h5 className="card-subtitle mb-2">{getAuthorName(post.userId)}</h5>
-        <p className="card-text">{makeUpperCaseFirstSymbol(post.body)}</p>
+        <p className="card-text mb-3">{makeUpperCaseFirstSymbol(post.body)}</p>
       </div>
     </div>
   );

@@ -1,12 +1,14 @@
 import React from "react";
 
 const QuantityOnPage = ({
+  setCurrentPage,
   setPageSizePagination,
   pageSizePagination,
   quantityOnPageOptions,
 }) => {
   const handleChange = ({ target }) => {
     setPageSizePagination(target.value);
+    setCurrentPage(1);
   };
 
   return (

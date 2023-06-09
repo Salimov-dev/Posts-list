@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 
 const searchQuerySlice = createSlice({
   name: "searchQuery",

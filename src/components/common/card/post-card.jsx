@@ -2,7 +2,7 @@ import React from "react";
 import CardContent from "./card-content";
 import Comments from "./comments";
 
-const PostCard = ({ post, users, comments, onOpenUserPage, onLoadComments }) => {
+const PostCard = ({ post, users, comments, onOpenUserPage }) => {
   return (
     <>
       <CardContent post={post} users={users} onOpenUserPage={onOpenUserPage} />

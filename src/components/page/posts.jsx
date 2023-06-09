@@ -8,16 +8,15 @@ import Pagination from "../common/pagination/Pagination";
 import SearchForm from "../UI/navbar/components/search-form";
 import QuantityOnPage from "../common/card/quantity-on-page";
 import Switch from "../common/switch";
+import Loader from "../common/loader";
 // store
 import { getPosts } from "../../store/posts.store";
 import { getUsers } from "../../store/users.store";
-import { getComments } from "../../store/comments.store";
+import { setSelectedUser } from "../../store/selected-user.store";
 // utils
 import { paginate } from "../../utils/paginate";
 // mock
 import { quantityOnPageOptions } from "../../mockData/quantity-on-page-options";
-import { setSelectedUser } from "../../store/selected-user.store";
-import Loader from "../common/loader";
 
 const Posts = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -59,6 +58,7 @@ const Posts = () => {
           <SearchForm setData={setSearchQuery} className="d-flex" />
           <div className="d-flex gap-3 align-items-center quantityAndSwitch__container">
             <QuantityOnPage
+              setCurrentPage={setCurrentPage}
               setPageSizePagination={setPageSizePagination}
               pageSizePagination={pageSizePagination}
               quantityOnPageOptions={quantityOnPageOptions}
@@ -82,7 +82,7 @@ const Posts = () => {
             </div>
           ))
         ) : (
-          <div style={{ height: "75vh" }}>
+          <div style={{ height: "50vh" }}>
             <Loader />
           </div>
         )}

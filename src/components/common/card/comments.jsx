@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getComments,
@@ -7,35 +7,19 @@ import {
 } from "../../../store/comments.store";
 import Comment from "./comment";
 import Loader from "../loader";
-import { nanoid } from "nanoid";
+import useRandom from "../../hooks/useRandom";
 
 const Comments = ({ post }) => {
   const comments = useSelector(getComments());
   const isLoading = useSelector(getCommentsStatus());
+  const randomId = useRandom();
   const dispatch = useDispatch();
 
   const handleLoadComments = (postId) => {
-    if (comments[post.id] === undefined) {
+    if (comments[`${postId}`] === undefined) {
       return dispatch(loadCommentsList(postId));
     }
   };
-
-  const generateRandomLetters = () => {
-    let length = 3;
-    let result = " ";
-    const characters = "abcdefghijklmnopqrstuvwxyz";
-    const charactersLength = characters.length;
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  };
-
-  let randomId = (
-    generateRandomLetters() + Math.round(Math.random() * (100 - 1) + 1)
-  )
-    .replace(" ", "")
-    .trim();
 
   return (
     <div className="d-flex flex-column align-items-end">

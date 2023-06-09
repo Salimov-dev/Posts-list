@@ -39,27 +39,12 @@ export const loadCommentsList = (postId) => async (dispatch) => {
       `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
     );
     setTimeout(() => {
-      dispatch(commentsListReceived(data));
+      dispatch(commentsListReceived(data, postId));
     }, 500);
   } catch (error) {
     commentsListFailed(error.message);
   }
 };
-
-// export const loadCommentsList = (postId) => async (dispatch) => {
-//   dispatch(commentsListRequested());
-//   try {
-//     const { data } = await axios(
-//       `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
-//     );
-//     setTimeout(() => {
-//       // dispatch(commentsListReceived(prevState => prevState, ...data))
-//       dispatch(commentsListReceived(data));
-//     }, 500);
-//   } catch (error) {
-//     commentsListFailed(error.message);
-//   }
-// };
 
 export const getComments = () => (state) => state.comments.entities;
 

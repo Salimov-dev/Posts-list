@@ -19,6 +19,7 @@ import { setSelectedUser } from "../../store/selected-user.store";
 import { paginate } from "../../utils/paginate";
 // mock
 import { quantityOnPageOptions } from "../../mockData/quantity-on-page-options";
+import Loader from "../common/loader";
 
 const AboutUser = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -63,7 +64,7 @@ const AboutUser = () => {
     searchedPosts.length > 0 ? searchedPosts : selectedUserPosts;
   const count = postsList.length;
   const sortedPosts = _.orderBy(postsList, [isSort ? "title" : ""]);
-  
+
   let postsCrop = paginate(sortedPosts, currentPage, pageSizePagination);
 
   const handlePageChange = (pageIndex) => {
@@ -80,39 +81,60 @@ const AboutUser = () => {
 
   return (
     <>
-      <div className="container p-3">
-        <NavLink to={-1}>
-          <button className="btn btn-outline-secondary mb-2">Назад</button>
-        </NavLink>
+      {
+        <div className="container p-3 ">
+          {selectedUser !== undefined ? (
+            <div className="h-50">
+              <NavLink to="/">
+                <button className="btn btn-outline-secondary mb-2">
+                  Назад
+                </button>
+              </NavLink>
 
-        <UserProfile array={selectedUserTransform} />
+              <UserProfile array={selectedUserTransform} />
 
-        <h2 className="mt-4">Все посты пользователя {selectedUser?.name}</h2>
-        <div className="d-flex gap-3 align-items-center mb-2 justify-content-between">
-          <SearchForm setData={setSearchQuery} />
-          <QuantityOnPage
-            setPageSizePagination={setPageSizePagination}
-            pageSizePagination={pageSizePagination}
-            quantityOnPageOptions={quantityOnPageOptions}
-          />
-          <Switch
-            name="sortByHeader"
-            onClick={() => setIsSort(!isSort)}
-            label="Сортировать по заголовку"
-          />
+              <h2 className="mt-4">
+                Все посты пользователя {selectedUser?.name}
+              </h2>
+              <div className="d-flex gap-3 flex-column-reverse align-items-center mb-2 justify-content-between flex-lg-row">
+                <SearchForm setData={setSearchQuery} />
+                <QuantityOnPage
+                  setPageSizePagination={setPageSizePagination}
+                  pageSizePagination={pageSizePagination}
+                  quantityOnPageOptions={quantityOnPageOptions}
+                />
+                <Switch
+                  name="sortByHeader"
+                  onClick={() => setIsSort(!isSort)}
+                  label="Сортировать по заголовку"
+                />
+              </div>
+
+              {postsCrop.length > 0 ? (
+                postsCrop.map((post) => (
+                  <div key={post.id} className="card p-3 mb-3 myCard">
+                    <PostCard
+                      post={post}
+                      users={users}
+                      comments={comments}
+                      onOpenUserPage={handleOpenUserPage}
+                    />
+                  </div>
+                ))
+              ) : (
+                <div style={{ height: "50vh" }}>
+                  <Loader />
+                </div>
+              )}
+            </div>
+          ) : (
+            <h4>
+              Сначала выберите пользователя, кликнув на аватарке автора поста со
+              страницы "Посты"
+            </h4>
+          )}
         </div>
-
-        {postsCrop.map((post) => (
-          <div key={post.id} className="card p-3 mb-3 myCard">
-            <PostCard
-              post={post}
-              users={users}
-              comments={comments}
-              onOpenUserPage={handleOpenUserPage}
-            />
-          </div>
-        ))}
-      </div>
+      }
 
       <Pagination
         objects={postsCrop}
